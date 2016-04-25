@@ -1,0 +1,48 @@
+{
+\begin{table}[htb]
+    \captionsetup{singlelinecheck=on,labelfont=bf,labelsep=colon,font=bf,justification=centering}
+    \setmainfont[Numbers={Proportional, OldStyle}]{Minion Pro}%
+    \setmainfont[Numbers={Monospaced, Lining}]{Minion Pro}%
+    \sisetup{%
+        input-symbols=(),%
+        group-digits=integer,% true false integer decimal
+        table-format = 2.0,
+        table-column-width=0.8cm
+        %color=red
+    }
+    
+    \setlength{\tabcolsep}{0.1cm}
+    \caption{$title}\label{table:$label}
+    \centering
+    \begin{threeparttable}
+    \renewcommand{\TPTminimum}{0cm} % Need to reset it to zero otherwise it will be left aligned
+    \begin{tabular}{ *{4}{l} *{6}{r} }
+    \toprule
+        {Company} & {Sister Bank} & {Chain} & {Store Type} & 
+            \multicolumn{2}{c}{Peru} & \multicolumn{2}{c}{Lima} & \multicolumn{2}{c}{Other Cities} \\ \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10}
+        & & & & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{2006--} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{2006--} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{2006--} \\
+    \midrule
+Falabella & Falabella & Tottus & Hypermarket & 28 & 25 & 18 & 15 & 10 & 10 \\
+ & & Saga & Dept. Store & 23 & 14 & 9 & 5 & 14 & 9 \\
+ & & Sodimac & Warehouse & 17 & 15 & 8 & 6 & 9 & 9 \\
+\\
+SPSA & Interbank & Plaza Vea & Hypermarket & 52 & 38 & 35 & 21 & 17 & 17 \\
+ & & Vivanda & Supermarket & 8 & 3 & 8 & 3 & 0 & 0 \\
+ & & Oechsle & Dept. Store & 6 & 6 & 2 & 2 & 4 & 4 \\
+ \\
+Cencosud & --- & Super Metro & Supermarket & 31 & 30 & 24 & 23 & 7 & 7 \\
+ & & Hiper Metro & Hypermarket & 14 & 2 & 14 & 2 & 0 & 0 \\
+ & & Wong & Supermarket & 13 & 3 & 12 & 2 & 1 & 1 \\
+ \\
+Ripley & Ripley & Ripley & Dept. Store & 17 & 10 & 12 & 5 & 5 & 5 \\
+\\
+Makro & --- & Makro & Warehouse & 8 & 8 & 5 & 5 & 3 & 3 \\
+\midrule\multicolumn{4}{l}{Total} & 217 & 154 & 147 & 89 & 70 & 65 \\
+\bottomrule
+    \end{tabular}
+    \begin{tablenotes}\small
+        \Note{$notes}
+    \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+}
