@@ -33,7 +33,7 @@ def action(elem, doc):
 
 def finalize(doc):
 	c1 = pf.TableCell(pf.Plain(pf.Str("Element")))
-	c2 = pf.TableCell(pf.Plain(pf.Str("Freqency")))
+	c2 = pf.TableCell(pf.Plain(pf.Str("Frequency")))
 	header = pf.TableRow(c1, c2)
 	rows = []
 	for tag in doc.counter:
@@ -43,5 +43,10 @@ def finalize(doc):
 	table = pf.Table(*rows, header=header)
 	doc.content = [table] # bugbug?
 
+
+def main(doc=None):
+     return pf.run_filter(action, prepare, finalize)
+
+
 if __name__ == '__main__':
-    pf.toJSONFilter(action, prepare, finalize)
+    main()
