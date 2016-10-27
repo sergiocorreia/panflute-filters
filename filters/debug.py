@@ -14,7 +14,6 @@ def action(elem, doc):
           raw = json.loads(raw)
           raw = json.dumps(raw, check_circular=False,
                            indent=4, separators=(',', ': '))
-          pf.debug(dir(elem))
           disclaimer = pf.Para(pf.Emph(pf.Str('Note: sort order not preserved')))
           elem.content = [pf.Header(pf.Str('sys.argv:'), level=2),
                           pf.Plain(pf.Str(str(sys.argv))),
