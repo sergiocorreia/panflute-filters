@@ -1,0 +1,11 @@
+title: debug.py - inspect Pandoc's JSON output
+author: Sergio Correia
+homepage: https://github.com/sergiocorreia/panflute-filters
+url: https://raw.githubusercontent.com/sergiocorreia/panflute-filters/master/filters/debug.yaml
+version: 1.0.0
+categories: [dev, inspect]
+description: |
+  This filter pretty prints the input it receives.
+  This is useful when debugging panflute filters, or the package itself.
+# install: <custom install commands besides simple & pip>
+# uninstall: <nothing here>
