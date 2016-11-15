@@ -1,0 +1,11 @@
+title: tabulate-elements.py - produce frequency table of the document elements
+author: Sergio Correia
+homepage: https://github.com/sergiocorreia/panflute-filters
+url: https://raw.githubusercontent.com/sergiocorreia/panflute-filters/master/filters/tabulate-elements.yaml
+version: 1.0.0
+categories: [dev, inspect]
+description: |
+  This filter returns a table with the frequencies of each Pandoc element
+  (Str, Space, Para, etc.).
+# install: <custom install commands besides simple & pip>
+# uninstall: <nothing here>
