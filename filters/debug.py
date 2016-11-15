@@ -35,8 +35,8 @@ def action(elem, doc):
         ]
 
 
-def main():
-    pf.toJSONFilter(action)
+def main(doc=None):
+    return pf.toJSONFilter(action)
 
 
 if __name__ == '__main__':
