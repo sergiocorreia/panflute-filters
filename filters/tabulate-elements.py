@@ -45,7 +45,7 @@ def finalize(doc):
 
 
 def main(doc=None):
-     return pf.run_filter(action, prepare, finalize)
+     return pf.run_filter(action, prepare, finalize, doc=doc)
 
 
 if __name__ == '__main__':
