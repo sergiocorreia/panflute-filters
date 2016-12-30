@@ -4,11 +4,13 @@ author:
 subtitle: Some subtitle
 title: Some title
 cmd: cls & pandoc ../tests/acronyms.md --to=latex -F acronyms.py && cls && pandoc ../tests/acronyms.md -s -F acronyms.py -H acronyms_header.tex --to=latex
+header-includes:
+	- \usepackage{RandomExample}
+	- \usepackage{YetAnotherExample}
 ---
 
 # List of Acronyms
 
-\glsaddall
 \printglossary[type=\acronymtype,title=Acronyms]
 
 # A Title

@@ -23,28 +23,32 @@ def prepare(doc):
 
 
 def action(e, doc):
-    if isinstance(e, pf.Link) and e.url == 'acro' and doc.format == 'latex':
+    if isinstance(e, pf.Link) and e.url == 'acro':
         acronym = pf.stringify(e)
         definition = e.title
         # Only update dictionary if definition is not empty
         if definition:
             doc.acronyms[acronym] = definition
-        tex = '\gls{{}}'.format(acronym)
-        tex = TEMPLATE_GLS.safe_substitute(acronym=acronym)
-        return pf.RawInline(tex, format='latex')
-        # return None -> element unchanged
-        # return [] -> delete element
+        
+        if doc.format == 'latex':
+            tex = '\gls{{}}'.format(acronym)
+            tex = TEMPLATE_GLS.safe_substitute(acronym=acronym)
+            return pf.RawInline(tex, format='latex')
 
 
 def finalize(doc):
-    tex = [r'\usepackage[acronym,smallcaps]{glossaries}', '\makeglossaries']
-    for acronym, definition in doc.acronyms.items():
-        tex_acronym = TEMPLATE_NEWACRONYM.safe_substitute(acronym=acronym, definition=definition)
-        tex.append(tex_acronym)
-    tex = '\n'.join(tex)
+    if doc.format == 'latex':
+        tex = [r'\usepackage[acronym,smallcaps]{glossaries}', '\makeglossaries']
+        for acronym, definition in doc.acronyms.items():
+            tex_acronym = TEMPLATE_NEWACRONYM.safe_substitute(acronym=acronym, definition=definition)
+            tex.append(tex_acronym)
 
-    with open('acronyms_header.tex', 'w', encoding='utf-8') as fh:
-        fh.write(tex)
+        tex = [pf.MetaInlines(pf.RawInline(line, format='latex')) for line in tex]
+        tex = pf.MetaList(*tex)
+        if 'header-includes' in doc.metadata:
+            doc.metadata['header-includes'].content.extend(tex)
+        else:
+            doc.metadata['header-includes'] = tex
 
 
 def main(doc=None):
