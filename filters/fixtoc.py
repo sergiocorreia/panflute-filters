@@ -2,7 +2,7 @@
 
 Usage:
 
-    pandoc --number-sections --file-scope --toc -s *.md | pandoc -f html -o toc.html -F fixtoc.py -M files:"*.md"
+    pandoc --number-sections --file-scope --toc -s *.md | pandoc -s -f html -o toc.html -F fixtoc.py -M files:"*.md"
 """
 
 import glob
