@@ -33,6 +33,10 @@ a caption here (optional), only the first paragraph is used.
 
 some text
 :::
+:::: {.trow bypara=true}
+If bypara=true
+
+Then each paragraph will be treated as a separate column
 ::::
 
 any text outside a div will be ignored
@@ -48,6 +52,7 @@ Notes
     - the width attribute is optional and refers to a relative column width
     - the align attribute is optional and can be either: left, right, center or default
     - if all headers are empty (e.g. []{align=center}), then no header row will be created
+- 
 
 """
 import panflute as pf
@@ -97,12 +102,18 @@ def action(element, doc):
                                  
         elif isinstance(tbl_el, pf.Div) and "trow" in tbl_el.classes:
             row = []
-            for row_el in tbl_el.content:
-                if isinstance(row_el, pf.Div) and "tcell" in row_el.classes:
-                    col = []
-                    for col_el in row_el.content:
-                        col.append(col_el)
-                    row.append(pf.TableCell(*col))
+            if tbl_el.attributes.get("bypara", False):
+                col = []
+                for row_el in tbl_el.content:
+                    if isinstance(row_el, pf.Para):
+                        row.append(pf.TableCell(row_el))
+            else:
+                for row_el in tbl_el.content:
+                    if isinstance(row_el, pf.Div) and "tcell" in row_el.classes:
+                        col = []
+                        for col_el in row_el.content:
+                            col.append(col_el)
+                        row.append(pf.TableCell(*col))
 
             rows.append(pf.TableRow(*row))
         
