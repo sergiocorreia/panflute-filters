@@ -12,7 +12,6 @@ def collapse(elem, doc):
                 """
                 <summary onclick="this.innerHTML == ' Show code ' ? this.innerHTML = ' Hide code ': this.innerHTML = ' Show code '"> Show code </summary>
                 """
-                #"<summary onclick=toggle_summary_text(this)> Show code </summary>", format="html"
             ),
             elem,
             pf.RawBlock("</details>", format="html"),
